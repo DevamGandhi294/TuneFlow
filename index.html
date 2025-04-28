@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TuneFlow</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/player.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="public/logo.png" alt="TuneFlow Logo">
+    </div>
+    
+    <nav class="main-nav">
+      <ul>
+        <li class="active"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="browse.html"><i class="fas fa-compass"></i> Browse</a></li>
+        <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+        <li><a href="library.html"><i class="fas fa-music"></i> Library</a></li>
+      </ul>
+    </nav>
+    
+    <div class="user-playlists">
+      <h3>YOUR PLAYLISTS</h3>
+      <ul class="playlists-list">
+        <li><a href="playlist.html?id=1">Favorite Tracks</a></li>
+        <li><a href="playlist.html?id=2">Workout Mix</a></li>
+        <li><a href="playlist.html?id=3">Chill Vibes</a></li>
+        <li><a href="playlist.html?id=4">Study Music</a></li>
+        <li><a href="playlist.html?id=5">Road Trip</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <header class="top-bar">
+      <div class="nav-controls">
+        <button class="nav-control"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-control"><i class="fas fa-chevron-right"></i></button>
+      </div>
+
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search for artists, songs, or playlists">
+      </div>
+
+      <div class="user-controls">
+        <button id="login-button" class="btn btn-primary">Log In</button>
+        <button id="signup-button" class="btn btn-outline">Sign Up</button>
+        <div id="user-profile" class="user-profile hidden">
+          <img src="https://via.placeholder.com/32" alt="User Profile" class="user-avatar">
+          <span class="username">Username</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </header>
+
+    <section class="content-area">
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1>Welcome to TuneFlow</h1>
+          <p>Discover, stream, and share a constantly expanding mix of music from emerging and major artists around the world.</p>
+          <button class="btn btn-primary btn-lg">Start Listening</button>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.pexels.com/photos/3100776/pexels-photo-3100776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Music Visualization">
+        </div>
+      </section>
+
+      <!-- Recently Played Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Recently Played</h2>
+          <a href="#" class="see-all">See All</a>
+        </div>
+        <div class="card-grid">
+          <!-- Cards will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Made For You Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Made For You</h2>
+          <a href="#" class="see-all">See All</a>
+        </div>
+        <div class="card-grid">
+          <!-- Cards will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Popular Artists Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Popular Artists</h2>
+          <a href="#" class="see-all">See All</a>
+        </div>
+        <div class="artist-grid">
+          <!-- Artists will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- New Releases Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2>New Releases</h2>
+          <a href="#" class="see-all">See All</a>
+        </div>
+        <div class="card-grid">
+          <!-- Cards will be populated by JavaScript -->
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Authentication Modals -->
+  <div id="login-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close"><i class="fas fa-times"></i></button>
+      <h2>Log In</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+      </form>
+      <p class="form-switch">Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+    </div>
+  </div>
+
+  <div id="signup-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close"><i class="fas fa-times"></i></button>
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <div class="form-group">
+          <label for="signup-username">Username</label>
+          <input type="text" id="signup-username" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+      </form>
+      <p class="form-switch">Already have an account? <a href="#" id="switch-to-login">Log In</a></p>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="modal-overlay"></div>
+
+  <!-- Music Player -->
+  <footer class="player">
+    <div class="now-playing">
+      <img src="https://via.placeholder.com/56" alt="Album Cover" class="album-thumbnail">
+      <div class="track-info">
+        <div class="track-name">Track Name</div>
+        <div class="artist-name">Artist Name</div>
+      </div>
+      <button class="like-button"><i class="far fa-heart"></i></button>
+    </div>
+
+    <div class="player-controls">
+      <div class="control-buttons">
+        <button class="control-button"><i class="fas fa-random"></i></button>
+        <button class="control-button"><i class="fas fa-step-backward"></i></button>
+        <button class="control-button play-pause"><i class="fas fa-play"></i></button>
+        <button class="control-button"><i class="fas fa-step-forward"></i></button>
+        <button class="control-button"><i class="fas fa-redo"></i></button>
+      </div>
+      <div class="playback-bar">
+        <span class="current-time">0:00</span>
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+          <div class="progress-handle"></div>
+        </div>
+        <span class="total-time">0:00</span>
+      </div>
+    </div>
+
+    <div class="volume-controls">
+      <button class="volume-button"><i class="fas fa-volume-up"></i></button>
+      <div class="volume-container">
+        <div class="volume-bar">
+          <div class="volume-level"></div>
+        </div>
+        <div class="volume-handle"></div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
